@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  # we can also specify the IPs here like: hosts: 127.0.0.1,xxx.xxx.xxx.xxx
+#remote_user: root
+#  sudo: yes
+
+  tasks:
+    - name: Copy the script to the remote machine
+      copy:
+        src: test.sh
+        # this directory /home must be created in advance or must exist
+        dest: /home/test.sh
+        mode: 0777
+
+
+    - name: Execute the script
+      command: sh /home/test.sh
+
+
